@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material";
-
+import { Link as RouterLink } from "react-router-dom";
 export const theme = (mode) =>
   createTheme({
     palette: {
@@ -17,8 +17,10 @@ export const theme = (mode) =>
               main: "#007D53",
               light: "#007E92",
               dark: "#09a16b",
-              border: "#bcbcce",
+              border: "rgb(241, 243, 244)",
+              border2: "rgba(50, 71, 92, 0.12)",
               svg: "#000",
+              scrollbar: "#c4c4c4",
             },
           }
         : {
@@ -30,9 +32,11 @@ export const theme = (mode) =>
             },
             primary: {
               main: "#1BB385",
-              border: "#bcbcce",
+              border: "rgb(46, 50, 54)",
+              border2: "rgba(219, 219, 235, 0.12)",
               light: "#189AB4",
               dark: "#009766",
+              scrollbar: "#626585",
             },
             secondary: {
               main: "#2e3d4b",
@@ -40,14 +44,16 @@ export const theme = (mode) =>
           }),
     },
     components: {
-      MuiCssBaseline: {
+      MuiLink: {
+        defaultProps: {
+          component: RouterLink,
+        },
         styleOverrides: {
-          body: {
-            "::-webkit-scrollbar-thumb": {
-              backgroundColor: mode === "light" ? "#c4c4c4" : "#626585",
-            },
-            "*::-webkit-scrollbar-thumb": {
-              backgroundColor: mode === "light" ? "#c4c4c4" : "#626585",
+          root: {
+            color: mode === "light" ? "#007d53" : "#1bb385",
+            textDecoration: "none",
+            "&:hover": {
+              color: mode === "light" ? "#09a16b" : "#009766",
             },
           },
         },
